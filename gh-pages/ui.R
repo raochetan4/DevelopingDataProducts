@@ -21,12 +21,14 @@ fluidPage(
     checkboxInput('smooth', 'Smooth'),
     
     selectInput('facet_row', 'Facet Row', c(None='.', names(dataset))),
-    selectInput('facet_col', 'Facet Column', c(None='.', names(dataset)))
+    selectInput('facet_col', 'Facet Column', c(None='.', names(dataset))),
+    p(strong(em("Documentation:",a("Ozone Data Plots",href="READMe.html"))))
+    
   ),
   
   mainPanel(
     tabsetPanel(
-      tabPanel("Documentation", value = "A", HTML(paste("1. Requires ElemLearnStat package.", "2. Select X label as OZONE.","3. Select Y label as SOME OTHER VARIABLE."," 4. COLOR can be any other classifier variable which you think could be a 3rd dimensional distinguishing pointer.","5. SMOOTHING and JITTER function can be used to understand the smoothing and jitter effects in the data sets.",sep="<br/>"))),
+      tabPanel("Documentation", verbatimTextOutput("summary")),
       tabPanel("Plot", plotOutput('plot'))
     )
   )

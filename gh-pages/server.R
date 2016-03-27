@@ -6,7 +6,7 @@ function(input, output) {
   dataset <- reactive({
     ozone[sample(nrow(ozone), input$sampleSize),]
   })
-  output$text <- renderText({paste0("You are viewing tab \"", input$tabs, "\"")})
+  
   output$plot <- renderPlot({
     
     p <- ggplot(dataset(), aes_string(x=input$x, y=input$y)) + geom_point()
